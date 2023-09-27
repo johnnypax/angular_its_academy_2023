@@ -1,0 +1,19 @@
+<div class="container">
+
+    <h1>Inserisci studente</h1>
+
+    <div class="mb-3">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" [(ngModel)]="varNome" name="var_nome" class="form-control" id="inputNome" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputCognome" class="form-label">Cognome</label>
+        <input type="text" [(ngModel)]="varCognome" name="var_cogn" class="form-control" id="inputCognome" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputMatricola" class="form-label">Matricola</label>
+        <input type="text" [(ngModel)]="varMatricola" name="var_matr" class="form-control" id="inputMatricola" aria-describedby="emailHelp">
+    </div>
+    <button type="button" (click)="insertStudente()" class="btn btn-primary">Salva</button>
+
+</div>

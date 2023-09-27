@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Matricola</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let stu of elenco">
+                <td>{{ stu.nome }}</td>
+                <td>{{ stu.cognome }}</td>
+                <td>
+                    <a href="studenti/dettaglio/{{ stu._id }}">
+                        {{ stu.matricola }}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

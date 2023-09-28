@@ -1,0 +1,23 @@
+<div class="container">
+
+    <h1>Inserisci Prodotto</h1>
+
+    <div class="mb-3">
+        <label for="inputCodice" class="form-label">Codice</label>
+        <input type="text" [(ngModel)]="varCodice" name="Codice" class="form-control" id="inputCodice" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" [(ngModel)]="varNome" name="Nome" class="form-control" id="inputNome" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputPrezzo" class="form-label">Prezzo</label>
+        <input type="number" [(ngModel)]="varPrezzo" name="Prezzo" class="form-control" id="inputPrezzo" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="inputCategoria" class="form-label">Categoria</label>
+        <input type="text" [(ngModel)]="varCategoria" name="Categoria" class="form-control" id="inputCategoria" aria-describedby="emailHelp">
+    </div>
+    <button type="button" (click)="modificaProdotto()" class="btn btn-primary">Salva</button>
+
+</div>

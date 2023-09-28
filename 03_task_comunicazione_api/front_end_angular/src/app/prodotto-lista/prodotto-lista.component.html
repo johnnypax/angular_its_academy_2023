@@ -1,0 +1,30 @@
+<div class="container">
+    <div *ngIf="isErroreConnessione" class="alert alert-danger" role="alert">
+        Errore di connessione
+      </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Nome</th>
+                <th>Prezzo</th>
+                <th>Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of elenco">
+                <td> <a href="prodotto/dettaglio/{{ pro._id }}">
+                    {{ pro.codice }}
+                </a></td>
+                <td>{{ pro.nome }}</td>
+                <td>{{ pro.prezzo }}</td>
+                <td>{{ pro.categoria }}</td>
+                <td>
+                    <a class="btn btn-warning" href="prodotto/modifica/{{ pro._id }}">M</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

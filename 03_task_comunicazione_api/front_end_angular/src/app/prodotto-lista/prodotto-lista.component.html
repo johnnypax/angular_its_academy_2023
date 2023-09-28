@@ -23,6 +23,7 @@
                 <td>{{ pro.categoria }}</td>
                 <td>
                     <a class="btn btn-warning" href="prodotto/modifica/{{ pro._id }}">M</a>
+                    <a class="btn btn-danger" (click)="eliminaProdotto(pro._id)">D</a>
                 </td>
             </tr>
         </tbody>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProdottoserviceService } from '../prodottoservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Prodotto } from '../Prodotto';
 import { Risultato } from '../Risposta';
 
@@ -17,11 +17,13 @@ export class ProdottoModificaComponent {
   varPrezzo: number | undefined;
   varCategoria: string | undefined;
 
+  isInErrore: boolean = false;
+
   constructor(
     private service: ProdottoserviceService,
-    private rottaAttiva: ActivatedRoute
+    private rottaAttiva: ActivatedRoute,
+    private router: Router
     ){
-
   }
 
   ngOnInit(){
@@ -37,13 +39,15 @@ export class ProdottoModificaComponent {
             this.varCodice = pro.codice;
             this.varPrezzo = pro.prezzo;
             this.varCategoria = pro.categoria;
+
+            this.isInErrore = false;
           },
           (errore) => {
-
+            this.isInErrore = true;
           })
       },
       (errore) => {
-        
+        this.isInErrore = true;
       })
   }
 
@@ -57,8 +61,20 @@ export class ProdottoModificaComponent {
       categoria: this.varCategoria,
     }
 
-    //TODO: Fai una PUT per salvarlo!
-
+    this.service.update(oggetto).subscribe(
+      (risultato) => {
+        if(risultato.status == 'success'){
+          
+          this.router.navigateByUrl("prodotto/lista")
+        }
+        else
+          this.isInErrore = true;
+      },
+      
+      (errore) => {
+        this.isInErrore = true;
+      }
+    )
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProdottoserviceService } from '../prodottoservice.service';
 import { Risultato } from '../Risposta';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prodotto-lista',
@@ -12,7 +13,9 @@ export class ProdottoListaComponent {
   elenco: any = [];
   isErroreConnessione: boolean = false;
 
-  constructor(private service: ProdottoserviceService){
+  constructor(
+    private service: ProdottoserviceService,
+    private router: Router){
 
   }
 
@@ -32,6 +35,20 @@ export class ProdottoListaComponent {
     setInterval(() => {
       this.aggiornaLista();
     }, 1000)
-    
+  }
+
+  eliminaProdotto(varId: string){
+    this.service.delete(varId).subscribe(
+      (risultato) => {
+        if(risultato.status == 'success'){
+          
+          this.router.navigateByUrl("prodotto/lista")
+        }
+      },
+      (errore) => {
+        // alert("Errore di chiamata")
+        this.isErroreConnessione = true;
+      }
+    )
   }
 }
